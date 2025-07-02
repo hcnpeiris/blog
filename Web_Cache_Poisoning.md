@@ -74,4 +74,3 @@ To find **unkeyed headers** that can change the response:
 
 ---
 
-*Happy Hacking! Stay ethical and safe.*
