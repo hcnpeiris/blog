@@ -2,7 +2,7 @@
 
 
 ## Introduction
-**Web Cache Poisoning (WCP)** means caching an unusual response and serving it to other users. There are mainly two types of attacks:
+**Web Cache Poisoning (WCP)** means caching an unusual response and serving it to other users by storing as a cache. There are mainly two types of attacks:
 
 1. Caching with **XSS**
 2. **DoS** by triggering an error page
@@ -19,12 +19,18 @@ To understand this properly, you need a good idea of how caching works — inclu
 First, we need to check if a response is being cached and analyze its behavior (this involves identifying a **good cache oracle**).
 
 Examples of cache oracles:
-- `Age`
-- `Cache-Status`
+- Response header ( eg: `age`, `cache-control`). This research paper **[Internet’s Invisible Enemy: Detecting and Measuring Web Cache Poisoning in the Wild](https://www.jianjunchen.com/p/web-cache-posioning.CCS24.pdf)** lists various CDN cache oracle identification header fields in **Table 06**:  
+- Response time
+> Note: These oracles depend on the CDN and its configuration.
 
-> Note: These oracles depend on the CDN.
+Sometimes Akamai cache keys and info can be revealed using these headers:
+`Pragma: akamai-x-cache-on
+Pragma: akamai-x-get-true-cache-key
+Pragma: akamai-x-get-cache-key
+Pragma: akamai-x-check-cacheable`
 
-The research paper **[Internet’s Invisible Enemy: Detecting and Measuring Web Cache Poisoning in the Wild](https://www.jianjunchen.com/p/web-cache-posioning.CCS24.pdf)** lists various CDN cache oracle identification fields in **Table 06**:  
+
+
 
 ---
 
